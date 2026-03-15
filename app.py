@@ -15,7 +15,7 @@ HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
 
 # The free AI model we are using
-MODEL = "microsoft/Phi-3-mini-4k-instruct"
+MODEL = "mistralai/Mistral-7B-Instruct-v0.1"
 
 # --- PAGE SETTINGS ---
 st.set_page_config(
@@ -63,12 +63,13 @@ if user_input:
     with st.chat_message("assistant"):
         with st.spinner("Thinking... 🤔"):
             try:
-                response = client.chat_completion(
-                    model=MODEL,
-                    messages=st.session_state.messages,
-                    max_tokens=500,
-                    temperature=0.7  # 0 = more factual, 1 = more creative
-                )
+               response = client.text_generation(
+    model=MODEL,
+    prompt=f"<s>[INST] {user_input} [/INST]",
+    max_new_tokens=500,
+    temperature=0.7
+)
+reply = response
                 reply = response.choices[0].message.content
 
             except Exception as e:
