@@ -4,8 +4,7 @@ from huggingface_hub import InferenceClient
 
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
-MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-
+MODEL = "facebook/blenderbot-400M-distill"
 st.set_page_config(page_title="My AI Chatbot", page_icon="🤖")
 st.title("🤖 My Free AI Chatbot")
 st.caption("Powered by Hugging Face & Streamlit — 100% Free!")
