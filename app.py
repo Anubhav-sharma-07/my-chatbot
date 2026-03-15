@@ -64,12 +64,11 @@ if user_input:
         with st.spinner("Thinking... 🤔"):
             try:
                response = client.text_generation(
-    model=MODEL,
-    prompt=f"<s>[INST] {user_input} [/INST]",
-    max_new_tokens=500,
-    temperature=0.7
-)
-reply = response
+                    model=MODEL,
+                    prompt=f"<s>[INST] {user_input} [/INST]",
+                    max_new_tokens=500,
+                    temperature=0.7
+               )
                 reply = response.choices[0].message.content
 
             except Exception as e:
