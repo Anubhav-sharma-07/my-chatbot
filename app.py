@@ -105,18 +105,5 @@ with st.sidebar:
     st.markdown("Built with ❤️ using:")
     st.markdown("- 🤗 Hugging Face")
     st.markdown("- 🎈 Streamlit")
-```
 
----
 
-## ✅ Quick Checklist
-```
-□ Step 1: Created Hugging Face account
-□ Step 1: Copied my free HF token
-□ Step 2: Created GitHub account
-□ Step 2: Created repo called "my-chatbot"
-□ Step 2: Pasted app.py code into GitHub
-□ Step 3: Signed up on Streamlit with GitHub
-□ Step 3: Created new app pointing to app.py
-□ Step 3: Added HF_TOKEN to Streamlit secrets
-□ Step 3: Clicked Deploy 🚀
