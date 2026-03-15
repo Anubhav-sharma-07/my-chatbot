@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from huggingface_hub import InferenceClient
+import traceback
 
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
@@ -41,7 +42,7 @@ if user_input:
                     temperature=0.7
                 )
             except Exception as e:
-                reply = f"❌ Error: {str(e)}"
+                reply = f"❌ Error: {str(e)} | Details: {traceback.format_exc()}"
 
         st.write(reply)
 
