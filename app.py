@@ -15,7 +15,7 @@ HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
 
 # The free AI model we are using
-MODEL = "meta-llama/Llama-3.2-3B-Instruct"
+MODEL = "microsoft/Phi-3-mini-4k-instruct"
 
 # --- PAGE SETTINGS ---
 st.set_page_config(
