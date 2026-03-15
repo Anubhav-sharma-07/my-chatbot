@@ -69,7 +69,7 @@ if user_input:
                     max_new_tokens=500,
                     temperature=0.7
                )
-                reply = response.choices[0].message.content
+                reply = response
 
             except Exception as e:
                 reply = f"❌ Error: {str(e)}. Please check your Hugging Face token."
