@@ -15,7 +15,7 @@ HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
 
 # The free AI model we are using
-MODEL = "mistralai/Mistral-7B-Instruct-v0.1"
+MODEL = "HuggingFaceH4/zephyr-7b-beta"
 
 # --- PAGE SETTINGS ---
 st.set_page_config(
