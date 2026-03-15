@@ -4,7 +4,7 @@ from huggingface_hub import InferenceClient
 
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 client = InferenceClient(token=HF_TOKEN)
-MODEL = "google/gemma-2-2b-it"
+MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 
 st.set_page_config(page_title="My AI Chatbot", page_icon="🤖")
 st.title("🤖 My Free AI Chatbot")
