@@ -23,17 +23,16 @@ if user_input:
     with st.chat_message("assistant"):
         with st.spinner("Thinking... 🤔"):
             GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "NOT_FOUND")
-            
-            # Debug: show if key is found
+
             if GROQ_API_KEY == "NOT_FOUND":
-                reply = "❌ GROQ_API_KEY not found in secrets. Please check Streamlit secrets."
+                reply = "❌ GROQ_API_KEY not found. Please check Streamlit secrets."
             else:
                 headers = {
                     "Authorization": f"Bearer {GROQ_API_KEY}",
                     "Content-Type": "application/json"
                 }
                 data = {
-                    "model": "llama3-8b-8192",
+                    "model": "llama-3.3-70b-versatile",
                     "messages": st.session_state.messages
                 }
                 response = requests.post(
@@ -42,12 +41,11 @@ if user_input:
                     json=data
                 )
                 res = response.json()
-                
-                # Show full response for debugging
+
                 if "choices" in res:
                     reply = res["choices"][0]["message"]["content"]
                 else:
-                    reply = f"❌ Full API response: {res}"
+                    reply = f"❌ API Error: {res}"
 
         st.write(reply)
 
