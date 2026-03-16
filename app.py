@@ -7,7 +7,19 @@ st.title("🤖 My Free AI Chatbot")
 st.caption("Powered by Groq & Llama 3 — 100% Free!")
 
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {
+            "role": "system",
+            "content": """You are Aria, a friendly and professional sales assistant.
+Your job is to:
+- Greet clients warmly by name if you know it
+- Understand what the client needs
+- Recommend the right product or service confidently
+- Handle objections politely
+- Always end with a clear call to action like 'Shall I place the order for you?'
+Keep replies short, friendly, and focused on helping the client buy."""
+        }
+    ]
 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
