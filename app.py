@@ -22,8 +22,12 @@ if user_input:
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking... 🤔"):
-            try:
-                GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+            GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "NOT_FOUND")
+            
+            # Debug: show if key is found
+            if GROQ_API_KEY == "NOT_FOUND":
+                reply = "❌ GROQ_API_KEY not found in secrets. Please check Streamlit secrets."
+            else:
                 headers = {
                     "Authorization": f"Bearer {GROQ_API_KEY}",
                     "Content-Type": "application/json"
@@ -37,9 +41,14 @@ if user_input:
                     headers=headers,
                     json=data
                 )
-                reply = response.json()["choices"][0]["message"]["content"]
-            except Exception as e:
-                reply = f"❌ Error: {str(e)}"
+                res = response.json()
+                
+                # Show full response for debugging
+                if "choices" in res:
+                    reply = res["choices"][0]["message"]["content"]
+                else:
+                    reply = f"❌ Full API response: {res}"
+
         st.write(reply)
 
     st.session_state.messages.append({"role": "assistant", "content": reply})
